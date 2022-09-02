@@ -63,10 +63,11 @@ $gray: #eee;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   z-index: 100;
-  display: flex;
-  gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
   flex-wrap: wrap;
-  box-shadow: -1px 38px 80px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: -1px 38px 80px 0 rgba(0, 0, 0, 0.8);
   color: $black;
   background: #fff;
   padding: 0.5em 1em 1em 1em;
@@ -93,7 +94,7 @@ $gray: #eee;
   }
   .cta {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     flex-grow: 1;
     gap: 1em;
   }
@@ -201,9 +202,9 @@ $gray: #eee;
 
 @media only screen and (min-width: 900px) {
   #consent_banner {
-    gap: 2em;
+    grid-template-columns: 1fr 25em;
     .cta {
-      flex-grow: 1;
+      justify-content: right;
       button {
         padding: 0.75em 0;
       }
