@@ -1,6 +1,6 @@
 {
   "name": "consent-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A lightweight implementation of a GDPR compliant banner and modal in vanilla javascript.",
   "scripts": {
     "develop": "sass --style=compressed -w src/scss/consent-kit.scss dist/css/consent-kit.min.css",
