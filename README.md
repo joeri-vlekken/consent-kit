@@ -1,5 +1,5 @@
 # consent-kit
-**consent-kit** is a lightweight implementation of a GDPR compliant banner and modal in vanilla JavaScript.
+**consent-kit** is a lightweight implementation of a GDPR-compliant banner and modal in vanilla JavaScript.
 
 It allows the website visitor to easily **accept all** cookies or change his/her preferences through the **preference 
 screen**.
@@ -50,7 +50,7 @@ consentKit({
 ```
 The `consentKit()` function requires 2 configuration parameters:
 1. `cookie_name`: the consent cookie will be saved under this name when your website visitors gives a consent.
-2. `expiry_days`: the expire time (in days) for new consent cookies.
+2. `expiry_days`: the expiration time (in days) for new consent cookies.
 
 ## How it works
 Once consent-kit is loaded on your website, it will first check if a valid consent has been given, in that case the 
