@@ -12,7 +12,7 @@
     "url": "https://github.com/joeri-vlekken/consent-kit"
   },
   "author": "Joeri Vlekken",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "sass": "^1.54",
     "uglify-js": "^3.17",
