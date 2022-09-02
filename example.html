@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="nl-be">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>consent-kit example page</title>
+    <link rel="stylesheet" href="dist/css/consent-kit.min.css?v=1">
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #2f4f4f;
+            color: #fff;
+            margin: 2em;
+        }
+        #cookie-debug {
+            background: #466464;
+            padding: 1em;
+            margin: 1em 0;
+        }
+
+        #cookie-debug pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<script src="src/js/consent-kit.js?v=1"></script>
+<script>
+    // Initiate consent-kit
+    consentKit({
+        cookie_name: 'consent_kit',
+        expiry_days: 365
+    });
+</script>
+<section id="consent_banner" class="cookie_consent hidden">
+    <span class="disclaimer">
+        Our website uses cookies to remember your personal preferences and to offer you an optimal experience.
+        <a href="#">View our policy</a>
+    </span>
+    <section class="cta">
+        <button class="btn secondary" id="consent_settings" aria-label="Settings">Personal settings</button>
+        <button class="btn primary" id="consent_agree" aria-label="Accept">Accept all cookies</button>
+    </section>
+</section>
+<section id="consent_curtain" class="cookie_consent hidden">
+    <section class="modal">
+        <section class="header">
+            <div class="logo">
+                <img src="dist/img/cookie.svg" class="logo" alt="Cookie logo" />
+            </div>
+            
+            <section class="content">
+                <button id="curtain_close" aria-label="Close"></button>
+                <h2>Cookie preferences</h2>
+                <p>
+                    This website uses cookies to remember your personal settings, preferences and to 
+                    offer you an optimal experience. Cookies can also be used by other parties to 
+                    measure how our website is being used or to better align advertisements with your
+                    interests. View our <a href="#">cookie policy</a> for more information.
+                </p>
+                <p>
+                    We place cookies that are necessary for the functioning of our website 
+                    automatically. For all other cookies, you can decide for yourself which ones you 
+                    accept. This can be done through the settings below.
+                </p>
+            </section>
+        </section>
+        <section class="cookies">
+            <ul class="filters">
+                <li><button class="active" data-page="essential">Essential</button></li>
+                <li><button data-page="functional">Functional</button></li>
+                <li><button data-page="advertising">Advertising</button></li>
+                <li><button data-page="analysis">Analysis</button></li>
+            </ul>
+            <section class="cookie_content">
+                <section class="cookie active" data-page="essential">
+                    <div class="cookie_switch">
+                        <span class="cookie_display necessary"></span>
+                        <label class="switch locked">
+                            <input type="checkbox" disabled="disabled" checked="checked" id="cookie_essential" name="cookie_essential">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <h3>Essential cookies</h3>
+                    <p class="description">
+                        These cookies are necessary for the operation of the website and cannot be disabled.
+                        You can block these cookies through your browser settings but some parts of the website 
+                        may not work correctly.
+                    </p>
+                    <h4>Cookie providers</h4>
+                    <ul>
+                        <li>
+                            <h5>Example cookie 1</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                        <li>
+                            <h5>Example cookie 2</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="cookie" data-page="functional">
+                    <div class="cookie_switch">
+                        <span class="cookie_display"></span>
+                        <label class="switch">
+                            <input type="checkbox" id="cookie_functional" name="cookie_functional">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <h3>Functional cookies</h3>
+                    <p class="description">
+                        These cookies help in remembering your personal preferences. It allows us to provide you a
+                        personalized experience on our site.
+                    </p>
+                    <h4>Cookie providers</h4>
+                    <ul>
+                        <li>
+                            <h5>Example cookie 1</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                        <li>
+                            <h5>Example cookie 2</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="cookie" data-page="advertising">
+                    <div class="cookie_switch">
+                        <span class="cookie_display"></span>
+                        <label class="switch">
+                            <input type="checkbox" id="cookie_ads" name="cookie_ads">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <h3>Advertising cookies</h3>
+                    <p class="description">
+                        These cookies may use tracking technology and help us to make our messages more relevant to you.
+                    </p>
+                    <h4>Cookie providers</h4>
+                    <ul>
+                        <li>
+                            <h5>Example cookie 1</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                        <li>
+                            <h5>Example cookie 2</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="cookie" data-page="analysis">
+                    <div class="cookie_switch">
+                        <span class="cookie_display"></span>
+                        <label class="switch">
+                            <input type="checkbox" id="cookie_analysis" name="cookie_analysis">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <h3>Analysis cookies</h3>
+                    <p class="description">
+                        These cookies analyze the overall usage of our website. We use this information to optimize
+                        our website further.
+                    </p>
+                    <h4>Cookie providers</h4>
+                    <ul>
+                        <li>
+                            <h5>Example cookie 1</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                        <li>
+                            <h5>Example cookie 2</h5>
+                            <p>A brief summary describing the usage of this cookie on your website.</p>
+                        </li>
+                    </ul>
+                </section>
+
+            </section>
+        </section>
+        <section class="save">
+            <button id="cookies_update" class="btn tertiary">Save preferences</button>
+        </section>
+    </section>
+</section>
+<h1>consent-kit example page</h1>
+<section id="cookie-debug">
+    <p>Current consent data stored in the 'consent_kit' cookie:</p>
+    <pre></pre>
+</section>
+<button id="cookie-delete">Delete consent cookie</button>
+<script>
+  // Debug
+  document.getElementById("cookie-delete").addEventListener("click", () => {
+  document.cookie =
+   'consent_kit' +
+        "=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    });
+  const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+  document.getElementById("cookie-debug").querySelector("pre").innerHTML = getCookie('consent_kit');
+</script>
+</body>
+</html>

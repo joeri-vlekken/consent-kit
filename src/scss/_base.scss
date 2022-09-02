@@ -1,0 +1,244 @@
+// Colors
+
+$primary: #045e9a;
+$secondary: #55823b;
+$black: #333;
+$white: #fff;
+$gray: #eee;
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Hide the element when the 'hidden' class is present
+.hidden {
+  display: none !important;
+}
+
+// Shared elements for banner and curtain
+.cookie_consent {
+  button {
+    display: block;
+    max-width: 16em;
+    width: 100%;
+    margin: 0.5em 0 0 0;
+    padding: 1em 0;
+    font-weight: bold;
+    background: $primary;
+    border: none;
+    cursor: pointer;
+    color: $white;
+    &.secondary {
+      background: none;
+      color: $secondary;
+      border: 0.25em solid $secondary;
+    }
+    &.tertiary {
+      background: $primary;
+      color: $white;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Cookie consent banner
+#consent_banner {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  z-index: 100;
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  box-shadow: -1px 38px 80px 0px rgba(0, 0, 0, 0.8);
+  color: $black;
+  background: #fff;
+  padding: 0.5em 1em 1em 1em;
+  line-height: 1.5em;
+  border-top: 2px solid #ccc;
+  animation: 0.35s ease-in-out 0s 1 slideFromBottom;
+  font-size: .8em;
+  p {
+    margin: 0;
+  }
+  a {
+    color: $secondary;
+    font-weight: bold;
+  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .disclaimer {
+    align-self: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: .5em;
+  }
+  .cta {
+    display: flex;
+    justify-content: right;
+    flex-grow: 1;
+    gap: 1em;
+  }
+}
+
+// Cookie curtain
+#consent_curtain {
+  position: fixed;
+  overflow-y: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 110;
+  background: rgba(0, 0, 0, 0.2);
+
+  // Cookie modal
+  .modal {
+    .logo {
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: 1.5em;
+      }
+    }
+    overflow-y: auto;
+    color: $black;
+    font-size: .9em;
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 120;
+    max-width: 52em;
+    margin: 2em auto;
+    background: $white;
+    border-radius: 1em;
+    padding: 1em;
+    animation: 0.2s ease-in-out 0s 1 fadeIn;
+
+    h2 {
+      margin-top: .5em;
+    }
+
+    .header,
+    .cookies {
+      display: grid;
+      grid-template-columns: 15em 1fr;
+      gap: 1em;
+    }
+    .cookies {
+      border-top: 1px solid #ccc;
+      padding-top: 1em;
+      ul.filters {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li {
+          button {
+            padding: 0.75em 0.5em;
+            border: 1px solid #ccc;
+            color: $black;
+            background: #fff;
+            &.active {
+              background: #eee;
+              color: $secondary;
+            }
+          }
+        }
+      }
+      .cookie_content {
+        max-height: 15em;
+        overflow-y: auto;
+        .cookie {
+          display: none;
+          &.active {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .save {
+      min-height: 1.5em;
+      padding: 0.75em 0 0.5em 0;
+    }
+  }
+}
+
+#curtain_close {
+  float: right;
+  cursor: pointer;
+  border: none;
+  background: url("../img/close.svg");
+  width: 1.5em;
+  height: 1.5em;
+  padding: 0.25em;
+}
+
+#cookies_update {
+  margin: 0.5em 0 0 auto;
+}
+
+@media only screen and (min-width: 900px) {
+  #consent_banner {
+    gap: 2em;
+    .cta {
+      flex-grow: 1;
+      button {
+        padding: 0.75em 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  #consent_curtain {
+    .modal {
+      margin: 1em 0 0 0;
+      border-radius: 1em 1em 0 0;
+      top: unset;
+      transform: unset;
+      position: absolute;
+      bottom: 0;
+      .header {
+        grid-template-columns: 1fr;
+        margin-top: -1em;
+        img.logo {
+          display: none;
+        }
+      }
+      .cookies {
+        grid-template-columns: 1fr;
+        height: 14em;
+        ul.filters {
+          li {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+  }
+  #cookies_update {
+    margin: 0.5em auto 0 auto;
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "consent-kit",
+  "version": "0.0.1",
+  "description": "A lightweight implementation of a GDPR compliant banner and modal in vanilla javascript.",
+  "scripts": {
+    "develop": "sass --style=compressed -w src/scss/consent-kit.scss dist/css/consent-kit.min.css",
+    "buildjs": "uglifyjs src/js/consent-kit.js -o dist/js/consent-kit.min.js -c",
+    "build": "concurrently --kill-others \"sass --style=compressed src/scss/consent-kit.scss dist/css/consent-kit.min.css && npm run-script buildjs\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeri-vlekken/consent-kit"
+  },
+  "author": "Joeri Vlekken",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.54",
+    "uglify-js": "^3.17",
+    "concurrently": "^7.3"
+  }
+}
