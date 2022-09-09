@@ -97,10 +97,10 @@ const consentKit = (settings) => {
     const showCurtain = () => {
       consent_curtain.classList.remove("hidden");
 
-      // Add event listener to the close icon.
-      document
-        .getElementById("curtain_close")
-        .addEventListener("click", closeCurtain);
+      // If the close icon exists, add it's event listener.
+      let close_link = document.getElementById("curtain_close")
+      if(close_link) close_link.addEventListener("click", closeCurtain);
+
 
       // Add event listeners on all non-locked switches.
       document
