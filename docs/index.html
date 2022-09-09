@@ -39,7 +39,7 @@
     </span>
     <section class="cta">
         <button class="btn secondary" id="consent_settings" aria-label="Settings">Personal settings</button>
-        <button class="btn primary" id="consent_agree" aria-label="Accept">Accept all cookies</button>
+        <button class="btn primary consent_update" id="consent_agree" aria-label="Accept">Accept all cookies</button>
     </section>
 </section>
 <section id="consent_curtain" class="cookie_consent hidden">
@@ -184,7 +184,7 @@
             </section>
         </section>
         <section class="save">
-            <button id="cookies_update" class="btn tertiary">Save preferences</button>
+            <button id="cookies_update" class="btn tertiary consent_update">Save preferences</button>
         </section>
     </section>
 </section>
@@ -195,18 +195,38 @@
 </section>
 <button id="cookie-delete">Delete consent cookie</button>
 <script>
-  // Debug
+  // Debug consent delete link.
   document.getElementById("cookie-delete").addEventListener("click", () => {
-  document.cookie =
-   'consent_kit' +
-        "=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie =
+    'consent_kit' +
+            "=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      // Update the cookie debug info after the cookie has been deleted.
+      // We add a small delay to ensure the browser had time to update the cookie state.
+      setTimeout(updateDebug, 200)
     });
+
+  // Get the value of a cookie by name
   const getCookie = (name) => {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
       if (parts.length === 2) return parts.pop().split(';').shift();
   }
-  document.getElementById("cookie-debug").querySelector("pre").innerHTML = getCookie('consent_kit');
+
+  // Update the cookie debug info in the DOM.
+  const updateDebug = () => {
+      document.getElementById("cookie-debug").querySelector("pre").innerHTML = getCookie('consent_kit');
+  }
+
+  // Add an extra event listener to the consent update links and update the cookie debug info.
+  const consent_update = document.querySelectorAll(".consent_update");
+  consent_update.forEach((consent_link) => {
+      consent_link.addEventListener("click", () => {
+          setTimeout(updateDebug, 200)
+      })
+  })
+
+  // Update the cookie debug info upon initialisation.
+  updateDebug()
 </script>
 </body>
 </html>
