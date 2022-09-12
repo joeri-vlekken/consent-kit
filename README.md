@@ -21,12 +21,12 @@ European [General Data Protection Regulation (GDPR)](https://ec.europa.eu/info/l
 ## Installation
 ### Include the CSS and JS on your website
 You can choose to embed the CSS and JS files through the 
-[jsDelivr](https://cdn.jsdelivr.net/npm/consent-kit@0.0.5/dist/) CDN network or install and host the packages yourself.
+[jsDelivr](https://cdn.jsdelivr.net/npm/consent-kit@0.1.0/dist/) CDN network or install and host the packages yourself.
 #### Embedding through CDN
 Add the JS and CSS files in the `<head>` of your website:
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/consent-kit@0.0.5/dist/css/consent-kit.min.css">
-<script src="https://cdn.jsdelivr.net/npm/consent-kit@0.0.5/dist/js/consent-kit.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/consent-kit@0.1.0/dist/css/consent-kit.min.css">
+<script src="https://cdn.jsdelivr.net/npm/consent-kit@0.1.0/dist/js/consent-kit.min.js"></script>
 ```
 #### Alternative: install the npm packages
 You can host the files yourself by installing the package and referencing the files in your project:
