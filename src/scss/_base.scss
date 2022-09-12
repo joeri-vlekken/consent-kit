@@ -182,6 +182,13 @@ $gray: #eee;
     .save {
       min-height: 1.5em;
       padding: 0.75em 0 0.5em 0;
+      button {
+        float: right;
+        &.secondary {
+          padding: .77em 0;
+          margin-right: 1em;
+        }
+      }
     }
   }
 }
@@ -234,6 +241,20 @@ $gray: #eee;
         ul.filters {
           li {
             display: inline-flex;
+          }
+        }
+      }
+      .save {
+        button {
+          display: block;
+          max-width: unset;
+          float: unset;
+        }
+      }
+      .filters {
+        li {
+          button {
+            font-size: 12px;
           }
         }
       }

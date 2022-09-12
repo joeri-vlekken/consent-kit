@@ -4,7 +4,7 @@ const consentKit = (settings) => {
     const consent_banner = document.getElementById("consent_banner");
     const consent_curtain = document.getElementById("consent_curtain");
     const consent_settings = document.getElementById("consent_settings");
-    const consent_all = document.getElementById("consent_agree");
+    const consent_all = document.querySelectorAll(".consent_agree");
     const consent_update = document.getElementById("cookies_update");
 
     // Global cookie_consented variable
@@ -143,7 +143,10 @@ const consentKit = (settings) => {
 
     // Listen for clicks on the settings and agree buttons.
     consent_settings.addEventListener("click", showCurtain);
-    consent_all.addEventListener("click", agreeAll);
+    consent_all.forEach((consent) => {
+      consent.addEventListener("click", agreeAll);
+    })
+
 
     // Add event listeners on all the tabs
     document.querySelectorAll(".cookies .filters > li").forEach((tab) => {
