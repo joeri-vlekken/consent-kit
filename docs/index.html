@@ -8,19 +8,97 @@
     <style>
         body {
             font-family: sans-serif;
-            background: #2f4f4f;
-            color: #fff;
-            margin: 2em;
-        }
-        #cookie-debug {
-            background: #466464;
-            padding: 1em;
-            margin: 1em 0;
+            background: #E6E6EA;
+            color: #231942;
+            margin: 0;
         }
 
-        #cookie-debug pre {
-            white-space: pre-wrap;
+        .container {
+            max-width: 1180px;
+            display: block;
+            margin: 0 auto;
+            padding: 0 1em;
         }
+
+        .btn {
+            border: 2px solid;
+            border-radius: 4px;
+            padding: .5em .8em;
+            text-decoration: none;
+            margin-right: 1em;
+        }
+        .btn:hover {
+            text-decoration: underline;
+        }
+        .btn img {
+            position: relative;
+            top: 4px;
+        }
+        button.btn {
+            cursor: pointer;
+        }
+        .btn.primary {
+            background: #4281A4;
+            border-color: #4281A4;
+            color: #FFF;
+        }
+        .btn.secondary {
+            background: none;
+            border-color: #4281A4;
+            color: #4281A4;
+        }
+
+        header {
+            background: #4281A4;
+            color: #FFF;
+            overflow: hidden;
+            padding: 1em 0;
+        }
+        header .logo {
+            float: left;
+        }
+        header h1 {
+            margin: 0;
+            padding: 1em 0 0 3em;
+        }
+        .intro {
+            font-size: 1.25em;
+            padding: 4em 0;
+            background: #fff;
+        }
+
+        .intro p, .intro .intro-cta {
+            max-width: 32em;
+            line-height: 1.25em;
+        }
+        section#cookie-debug {
+            padding: 2em 0;
+        }
+        ul#cookie-state {
+            background: #FFF;
+            border-radius: 12px;
+            padding: 1em 0 1em 1.5em;
+            max-width: 10em;
+            list-style: none;
+            line-height: 1.75em;
+        }
+        ul#cookie-state li {
+            font-weight: bold;
+        }
+        ul#cookie-state li::before {
+            content: '';
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            background-image: url('dist/img/disabled.svg');
+            position: relative;
+            left: -6px;
+            top: 2px;
+        }
+        ul#cookie-state li.enabled::before {
+            background-image: url('dist/img/check-green.svg');
+        }
+
     </style>
 </head>
 <body>
@@ -46,38 +124,47 @@
     <section class="modal">
         <section class="header">
             <div class="logo">
-                <img src="dist/img/cookie.svg" class="logo" alt="Cookie logo" />
+                <img src="dist/img/cookie.svg" class="logo" alt="Cookie logo"/>
             </div>
-            
+
             <section class="content">
                 <button id="curtain_close" aria-label="Close"></button>
                 <h2>Cookie preferences</h2>
                 <p>
-                    This website uses cookies to remember your personal settings, preferences and to 
-                    offer you an optimal experience. Cookies can also be used by other parties to 
+                    This website uses cookies to remember your personal settings, preferences and to
+                    offer you an optimal experience. Cookies can also be used by other parties to
                     measure how our website is being used or to better align advertisements with your
                     interests. View our <a href="#">cookie policy</a> for more information.
                 </p>
                 <p>
-                    We place cookies that are necessary for the functioning of our website 
-                    automatically. For all other cookies, you can decide for yourself which ones you 
+                    We place cookies that are necessary for the functioning of our website
+                    automatically. For all other cookies, you can decide for yourself which ones you
                     accept. This can be done through the settings below.
                 </p>
             </section>
         </section>
         <section class="cookies">
             <ul class="filters">
-                <li><button class="active" data-page="essential">Essential</button></li>
-                <li><button data-page="functional">Functional</button></li>
-                <li><button data-page="advertising">Advertising</button></li>
-                <li><button data-page="analysis">Analysis</button></li>
+                <li>
+                    <button class="active" data-page="essential">Essential</button>
+                </li>
+                <li>
+                    <button data-page="functional">Functional</button>
+                </li>
+                <li>
+                    <button data-page="advertising">Advertising</button>
+                </li>
+                <li>
+                    <button data-page="analysis">Analysis</button>
+                </li>
             </ul>
             <section class="cookie_content">
                 <section class="cookie active" data-page="essential">
                     <div class="cookie_switch">
                         <span class="cookie_display necessary"></span>
                         <label class="switch locked">
-                            <input type="checkbox" disabled="disabled" checked="checked" id="cookie_essential" name="cookie_essential">
+                            <input type="checkbox" disabled="disabled" checked="checked" id="cookie_essential"
+                                   name="cookie_essential">
                             <span class="slider"></span>
                         </label>
                     </div>
@@ -85,7 +172,7 @@
                     <h3>Essential cookies</h3>
                     <p class="description">
                         These cookies are necessary for the operation of the website and cannot be disabled.
-                        You can block these cookies through your browser settings but some parts of the website 
+                        You can block these cookies through your browser settings but some parts of the website
                         may not work correctly.
                     </p>
                     <h4>Cookie providers</h4>
@@ -189,45 +276,88 @@
         </section>
     </section>
 </section>
-<h1>consent-kit example page</h1>
-<section id="cookie-debug">
-    <p>Current consent data stored in the 'consent_kit' cookie:</p>
-    <pre></pre>
-</section>
-<button id="cookie-delete">Delete consent cookie</button>
+<header>
+    <section id="top">
+        <div class="container">
+            <img src="dist/img/cookie-white.svg" class="logo" alt="Cookie" width="64px" height="64px">
+            <h1>consent-kit</h1>
+        </div>
+    </section>
+</header>
+<main>
+    <section class="intro">
+        <div class="container">
+            <p><strong>consent-kit</strong> is a lightweight implementation of a GDPR-compliant banner and modal in
+                vanilla
+                JavaScript.</p>
+            <div class="intro-cta">
+                <a href="https://github.com/joeri-vlekken/consent-kit#installation" class="btn primary">Installation</a>
+                <a href="https://github.com/joeri-vlekken/consent-kit" class="btn secondary">
+                    <img src="dist/img/github.svg" alt="GitHub" width="24px" height="24px" /> Source code</a>
+            </div>
+        </div>
+    </section>
+    <section id="cookie-debug">
+        <div class="container">
+            <p>Current consent data stored in the 'consent_kit' cookie:</p>
+            <ul id="cookie-state">
+                <li data-cookie-type="essential">Essential</li>
+                <li data-cookie-type="functional">Functional</li>
+                <li data-cookie-type="ads">Advertising</li>
+                <li data-cookie-type="analysis">Analysis</li>
+            </ul>
+            <button id="cookie-delete" class="btn primary">Reset consent</button>
+        </div>
+    </section>
+</main>
+
+
 <script>
-  // Debug consent delete link.
-  document.getElementById("cookie-delete").addEventListener("click", () => {
-    document.cookie =
-    'consent_kit' +
+    // Debug consent delete link.
+    document.getElementById("cookie-delete").addEventListener("click", () => {
+        document.cookie =
+            'consent_kit' +
             "=; path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-      // Update the cookie debug info after the cookie has been deleted.
-      // We add a small delay to ensure the browser had time to update the cookie state.
-      setTimeout(updateDebug, 200)
+        // Update the cookie debug info after the cookie has been deleted.
+        // We add a small delay to ensure the browser had time to update the cookie state.
+        setTimeout(updateDebug, 200)
     });
 
-  // Get the value of a cookie by name
-  const getCookie = (name) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-  }
+    // Get the value of a cookie by name
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
-  // Update the cookie debug info in the DOM.
-  const updateDebug = () => {
-      document.getElementById("cookie-debug").querySelector("pre").innerHTML = getCookie('consent_kit');
-  }
+    // Update the cookie debug info in the DOM.
+    const updateDebug = () => {
+        // Iterate over the cookie state list
+        const cookie_state = document.querySelectorAll('#cookie-state li');
+        const cookie = getCookie('consent_kit');
+        cookie_state.forEach((category) => {
+            console.log(cookie)
+            // Check if the category is found in the cookie and enable it.
+            if(cookie && cookie.indexOf(category.dataset.cookieType)) {
+                category.classList.add('enabled');
+                console.log('enable', category.dataset.cookieType)
+            } else {
+                category.classList.remove('enabled');
+                console.log('enable', category.dataset.cookieType)
+            }
+        })
+    }
 
-  // Add an extra event listener to the consent update links and update the cookie debug info.
-  const consent_update = document.querySelectorAll(".consent_update");
-  consent_update.forEach((consent_link) => {
-      consent_link.addEventListener("click", () => {
-          setTimeout(updateDebug, 200)
-      })
-  })
+    // Add an extra event listener to the consent update links and update the cookie debug info.
+    const consent_update = document.querySelectorAll(".consent_update");
+    consent_update.forEach((consent_link) => {
+        consent_link.addEventListener("click", () => {
+            setTimeout(updateDebug, 200)
+        })
+    })
 
-  // Update the cookie debug info upon initialisation.
-  updateDebug()
+    // Update the cookie debug info upon initialisation.
+    updateDebug()
 </script>
 </body>
 </html>
