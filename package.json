@@ -5,7 +5,7 @@
   "scripts": {
     "develop": "sass --style=compressed -w src/scss/consent-kit.scss dist/css/consent-kit.min.css",
     "server": "live-server --open=/docs",
-    "buildjs": "uglifyjs src/js/consent-kit.js -o dist/js/consent-kit.min.js -c && uglifyjs src/js/consent-kit.js -o dist/js/consent-kit.js",
+    "buildjs": "uglifyjs src/js/consent-kit.js -o dist/js/consent-kit.min.js -c && uglifyjs src/js/consent-kit.js -o dist/js/consent-kit.js && uglifyjs src/js/consent-kit.js -o docs/dist/js/consent-kit.js",
     "build": "concurrently --kill-others \"sass --style=compressed src/scss/consent-kit.scss dist/css/consent-kit.min.css && npm run-script buildjs\" && cp -R dist/* docs/dist"
   },
   "repository": {
