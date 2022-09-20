@@ -99,7 +99,13 @@
         ul#cookie-state li.enabled::before {
             background-image: url('dist/img/check-green.svg');
         }
-
+        @media only screen and (max-width: 400px) {
+            .btn {
+                display: block;
+                margin: .5em 0;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
