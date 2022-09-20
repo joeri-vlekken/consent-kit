@@ -98,9 +98,8 @@ const consentKit = (settings) => {
       consent_curtain.classList.remove("hidden");
 
       // If the close icon exists, add it's event listener.
-      let close_link = document.getElementById("curtain_close")
-      if(close_link) close_link.addEventListener("click", closeCurtain);
-
+      let close_link = document.getElementById("curtain_close");
+      if (close_link) close_link.addEventListener("click", closeCurtain);
 
       // Add event listeners on all non-locked switches.
       document
@@ -119,7 +118,7 @@ const consentKit = (settings) => {
 
       // Unset all tab indicators
       document.querySelectorAll(".cookies .filters > li").forEach((tab) => {
-        tab.firstChild.classList.remove("active");
+        tab.firstElementChild.classList.remove("active");
       });
 
       // Highlight the new tab
@@ -145,12 +144,11 @@ const consentKit = (settings) => {
     consent_settings.addEventListener("click", showCurtain);
     consent_all.forEach((consent) => {
       consent.addEventListener("click", agreeAll);
-    })
-
+    });
 
     // Add event listeners on all the tabs
     document.querySelectorAll(".cookies .filters > li").forEach((tab) => {
-      tab.firstChild.addEventListener("click", switchTab);
+      tab.firstElementChild.addEventListener("click", switchTab);
     });
 
     consentBanner();
