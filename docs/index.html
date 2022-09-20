@@ -344,14 +344,11 @@
         const cookie_state = document.querySelectorAll('#cookie-state li');
         const cookie = getCookie('consent_kit');
         cookie_state.forEach((category) => {
-            console.log(cookie)
             // Check if the category is found in the cookie and enable it.
-            if(cookie && cookie.indexOf(category.dataset.cookieType)) {
+            if(cookie && cookie.includes(category.dataset.cookieType)) {
                 category.classList.add('enabled');
-                console.log('enable', category.dataset.cookieType)
             } else {
                 category.classList.remove('enabled');
-                console.log('enable', category.dataset.cookieType)
             }
         })
     }
